@@ -8,8 +8,13 @@ namespace API.Entities
         public int ID { get; set; }
 
         [Required]
+        [DataType(DataType.Text)]
         public string Address1 { get; set; }
+        
+        [DataType(DataType.Text)]
         public string Address2 { get; set; }
+        
+        [DataType(DataType.Text)]
         public string Address3 { get; set; }
 
         [Required]

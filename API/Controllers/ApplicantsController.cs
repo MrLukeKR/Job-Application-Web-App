@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
 using API.Entities;
@@ -8,9 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ApplicantsController : ControllerBase
+    public class ApplicantsController : BaseController
     {
         private readonly DataContext _context;
         public ApplicantsController(DataContext context)
@@ -25,7 +22,9 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Applicant>>> GetApplicants()
         {
-            return await _context.Applicants.ToListAsync();
+            // Return applicant information via the '/api/applicants' endpoint. 
+            // Includes nested address entities.
+            return await _context.Applicants.Include(applicant => applicant.HomeAddress).ToListAsync();
         }
     }
 }
