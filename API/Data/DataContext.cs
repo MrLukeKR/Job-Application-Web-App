@@ -11,6 +11,6 @@ namespace API.Data
         }
 
         public DbSet<Applicant> Applicants { get; set; }
-        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Address> Address { get; set; }
     }
 }

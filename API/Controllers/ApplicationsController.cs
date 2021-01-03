@@ -8,11 +8,11 @@ using API.DTOs;
 
 namespace API.Controllers
 {
-    public class ApplicationController : BaseController
+    public class ApplicationsController : BaseController
     {
         private readonly DataContext _context;
 
-        public ApplicationController(DataContext context)
+        public ApplicationsController(DataContext context)
         {
             _context = context;
         }
@@ -20,6 +20,8 @@ namespace API.Controllers
         [HttpPost("apply")]
         public async Task<ActionResult<Applicant>> Apply(ApplicationDTO application)
         {
+            if(await ApplicantExists(application.EmailAddress)) 
+                return BadRequest("Application already received for this person!");
 
             var newApplicant = new Applicant
             {
@@ -58,10 +60,24 @@ namespace API.Controllers
             return newApplicant;
         }
 
+        // Simple method of checking if a user exists, assuming email address as a unique index for that user.
+        private async Task<bool> ApplicantExists(string emailAddress)
+        {
+            return await _context.Applicants.AnyAsync(x => x.EmailAddress == emailAddress);
+        }
+
+        private async Task<bool> AddressExists(string address1, string postcode)
+        {
+            return await _context.Address.AnyAsync(x => (x.Address1.ToLower() == address1.ToLower() && x.Postcode.ToLower() == postcode.ToLower()));
+        }
+
         private async Task<Address> GetAddress(string address1, string postcode){
-            return await _context.Addresses.SingleAsync(
-                x => (x.Address1.ToLower() == address1.ToLower() && x.Postcode.ToLower() == postcode.ToLower())
-            );
+            if(await AddressExists(address1, postcode))
+                return await _context.Address.SingleAsync(
+                    x => (x.Address1.ToLower() == address1.ToLower() && x.Postcode.ToLower() == postcode.ToLower())
+                );
+            else
+                return null;
         }
     }
 }
