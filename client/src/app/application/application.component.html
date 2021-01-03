@@ -10,10 +10,10 @@
         <table align="center">
           <tr>
             <td>
-              <input type="text" class="form-control" formControlName="forename" placeholder="Forename">
+              <input type="text" class="form-control" formControlName="forename" placeholder="Forename" required>
             </td>
             <td>
-              <input type="text" class="form-control" formControlName="surname" placeholder="Surname">
+              <input type="text" class="form-control" formControlName="surname" placeholder="Surname" required>
             </td>
         </tr>
         </table>
@@ -21,17 +21,17 @@
         <br>
 
         <label>Home Address:</label>
-        <input type="text" class="form-control" formControlName="address1" placeholder="Address Line 1">
-        <input type="text" class="form-control" formControlName="address2" placeholder="Address Line 2">
+        <input type="text" class="form-control" formControlName="address1" placeholder="Address Line 1" required>
+        <input type="text" class="form-control" formControlName="address2" placeholder="Address Line 2" required>
         <input type="text" class="form-control" formControlName="address3" placeholder="Address Line 3">
         <input type="text" class="form-control" formControlName="town" placeholder="Town">
         <table style="width:100%">
           <tr>
             <td>
-              <input type="text" class="form-control" formControlName="county" placeholder="County">
+              <input type="text" class="form-control" formControlName="county" placeholder="County" required>
             </td>
             <td>
-              <input type="text" class="form-control" formControlName="postcode" placeholder="Postcode">
+              <input type="text" class="form-control" formControlName="postcode" placeholder="Postcode" required>
             </td>
           </tr>
         </table>
@@ -40,15 +40,14 @@
       <br>
 
       <label>Contact Information:</label>
-      <input type="text" class="form-control" formControlName="homePhone" placeholder="Home Phone Number">
+      <input type="text" class="form-control" formControlName="homePhone" placeholder="Home Phone Number" required>
       <input type="text" class="form-control" formControlName="mobilePhone" placeholder="Mobile Phone Number">
-      <input type="text" class="form-control" formControlName="emailAddress" placeholder="E-Mail Address">
+      <input type="text" class="form-control" formControlName="emailAddress" placeholder="E-Mail Address" required>
       
       <br>
 
       <label>Earliest Start Date:</label>
-      <input type="date" class="form-control" formControlName="startDate">
-
+      <input type="date" class="form-control" [min]="today" formControlName="startDate" required>
       <br>
 
       <div class="form-group text-center">
