@@ -1,7 +1,12 @@
-import { OnInit, Output } from "@angular/core";
-import { FormControl, FormGroup, FormsModule } from "@angular/forms";
+import { Component, OnInit, Output } from "@angular/core";
+import { FormControl, FormGroup } from "@angular/forms";
 import { EventEmitter } from "events";
 
+@Component({
+    selector: 'app-application',
+    templateUrl: './application.component.html',
+    styleUrls: ['./application.component.css']
+  })
 export class ApplicationComponent implements OnInit{
     @Output() cancelApplication = new EventEmitter();
     model: any = {};
@@ -30,5 +35,9 @@ export class ApplicationComponent implements OnInit{
 
     applyToJob(){
         console.log(this.applicationForm.value);
+    }
+
+    cancel(){
+
     }
 }

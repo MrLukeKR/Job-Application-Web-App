@@ -1,7 +1,5 @@
 import { HttpClient, HttpClientJsonpModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-
 
 @Component({
   selector: 'app-root',
@@ -9,7 +7,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'ACME CORP - Job Application';
+  title = 'ACME CORPORATION';
   applicants: any;
 
   constructor(private http: HttpClient) {}

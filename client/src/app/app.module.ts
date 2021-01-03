@@ -6,10 +6,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { ApplicationComponent } from './application/application.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    ApplicationComponent
   ],
   imports: [
     BrowserModule,
