@@ -20,6 +20,7 @@ namespace API.Controllers
         [HttpPost("apply")]
         public async Task<ActionResult<Applicant>> Apply(ApplicationDTO application)
         {
+
             var newApplicant = new Applicant
             {
                 Forename = application.Forename,
@@ -30,15 +31,23 @@ namespace API.Controllers
                 StartDate = application.StartDate
             };
 
-            newApplicant.HomeAddress = new Address
-            {
-                Address1 = application.address1,
-                Address2 = application.address2,
-                Address3 = application.address3,
-                Town = application.town,
-                County = application.county,
-                Postcode = application.postcode
-            };
+            Address existingAddress = await GetAddress(application.address1, application.postcode);
+
+            // If address doesn't exist in database, create it, else, use the ID for the existing address.
+            // This is useful if there are multiple applicants from the same address, and saves data
+            // redundancy in the database.
+            if (existingAddress == null)
+                newApplicant.HomeAddress = new Address
+                {
+                    Address1 = application.address1,
+                    Address2 = application.address2,
+                    Address3 = application.address3,
+                    Town = application.town,
+                    County = application.county,
+                    Postcode = application.postcode
+                };
+            else
+                newApplicant.HomeAddress = existingAddress;
 
             // Start tracking new applicant
             _context.Applicants.Add(newApplicant);
@@ -47,6 +56,12 @@ namespace API.Controllers
             await _context.SaveChangesAsync();
 
             return newApplicant;
+        }
+
+        private async Task<Address> GetAddress(string address1, string postcode){
+            return await _context.Addresses.SingleAsync(
+                x => (x.Address1.ToLower() == address1.ToLower() && x.Postcode.ToLower() == postcode.ToLower())
+            );
         }
     }
 }
