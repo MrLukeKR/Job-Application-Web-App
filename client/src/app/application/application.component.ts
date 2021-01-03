@@ -42,6 +42,7 @@ export class ApplicationComponent implements OnInit{
     }
 
     cancel(){
-
+        if(confirm("Are you sure you wish to cancel your application?"))
+            this.initForm();
     }
 }
