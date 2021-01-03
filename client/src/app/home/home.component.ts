@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  adminMode = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  applicantViewToggle(){
+    this.adminMode = !this.adminMode;
   }
 
 }

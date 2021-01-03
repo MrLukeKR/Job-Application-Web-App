@@ -8,20 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'ACME CORPORATION';
-  applicants: any;
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
   
   ngOnInit() {
-    this.getApplicants();
+
   }
 
-  // Retrieve the database contents for applicant information from the ASP.NET API
-  getApplicants() {
-    this.http.get("https://localhost:5001/api/applicants").subscribe(response => 
-    { this.applicants = response; }, 
-    error => { console.log(error); }
-    );
-  }
+
 }
 

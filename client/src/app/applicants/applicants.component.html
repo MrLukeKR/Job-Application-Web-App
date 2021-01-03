@@ -1,0 +1,49 @@
+<section class="applicants-view">
+<h3>Current Applicants</h3>
+<table style="width:100%">
+    <tr style="text-align: center;">
+        <td><b>Forename</b></td>
+        <td><b>Surname</b></td>
+        <td><b>E-Mail Address</b></td>
+        <td><b>Home Phone</b></td>
+        <td><b>Mobile Phone</b></td>
+        <td><b>Address 1</b></td>
+        <td><b>Address 2</b></td>
+        <td><b>Address 3</b></td>
+        <td><b>Town</b></td>
+        <td><b>County</b></td>
+        <td><b>Postcode</b></td>
+        <td><b>Start Date</b></td>
+    </tr>
+    <tr *ngFor='let applicant of applicantEntities'>
+        <td> {{ applicant.forename }} </td> 
+        <td> {{ applicant.surname }} </td> 
+        <td> {{ applicant.emailAddress }} </td> 
+        <td> {{ applicant.homePhone }} </td> 
+        <td> {{ applicant.mobilePhone }} </td> 
+        <td> {{ applicant.homeAddress.address1 }} </td> 
+        <td> {{ applicant.homeAddress.address2 }} </td> 
+        <td> {{ applicant.homeAddress.address3 }} </td> 
+        <td> {{ applicant.homeAddress.town }} </td> 
+        <td> {{ applicant.homeAddress.county }} </td> 
+        <td> {{ applicant.homeAddress.postcode }} </td> 
+        <td> {{ applicant.startDate }} </td> 
+    </tr>
+</table>
+<br>
+<h4>Overview</h4>
+<table align="center">
+    <tr>
+        <td align="right"><b>Total Applicants:</b> </td>
+        <td>{{ applicantEntities?.length }}</td>
+    </tr>
+    <tr>
+        <td align="right"><b>Earliest Start Date:</b> </td>
+        <td>{{ earliestStartDate }}</td>
+    </tr>
+    <tr>
+        <td align="right"><b>Latest Start Date:</b> </td>
+        <td>{{ latestStartDate }}</td>
+    </tr>
+</table>
+</section>
