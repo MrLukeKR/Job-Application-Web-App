@@ -1,0 +1,23 @@
+<section class="application-form" style="text-align:center">
+    <h1>
+      Job Application Form
+    </h1>
+    <form [formGroup]="applicationForm" (ngSubmit)="applyToJob()" autocomplete="off">
+      <div class="form-group">
+        <label>Forename:</label>
+        <input type="text" class="form-control" formControlName="forename" placeholder="Forename">
+
+        <label>Surname:</label>
+        <input type="text" class="form-control" formControlName="surname" placeholder="Surname">
+      </div>
+      
+      <div class="form-group text-center">
+        <button class="btn btn-default mr-2" type="submit" [disabled]="!applicationForm.valid">Submit Application</button>
+        <button class="btn btn-default mr-2" type="button" (click)="cancel()">Cancel Application</button>
+      </div>
+    </form>
+
+    <p>Status: {{applicationForm.status | json}}</p>
+
+</section>
+

@@ -1,5 +1,7 @@
 import { HttpClient, HttpClientJsonpModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -24,3 +26,4 @@ export class AppComponent implements OnInit {
     );
   }
 }
+
