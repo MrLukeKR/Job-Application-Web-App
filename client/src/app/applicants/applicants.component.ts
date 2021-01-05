@@ -30,12 +30,16 @@ export class ApplicantsComponent implements OnInit {
     );
   }
 
-  processDates(){
+  processDates(){    
+    this.startDates = this.applicantEntities.map(x => x.startDate = new Date(x.startDate));
+    
+    this.earliestStartDate = new Date(this.startDates.reduce((a, b) => a < b ? a : b));
+    this.latestStartDate = new Date(this.startDates.reduce((a, b) => a > b ? a : b));
+  }
+
+  formatDate(date: Date){
     var pipe = new DatePipe('en-GB');
 
-
-    this.startDates = this.applicantEntities.map(x => x.startDate = pipe.transform(new Date(x.startDate), 'mediumDate'));
-    this.earliestStartDate = this.startDates.reduce((a, b) => a < b ? a : b);
-    this.latestStartDate = this.startDates.reduce((a, b) => a > b ? a : b);
+    return pipe.transform(date, 'mediumDate');
   }
 }

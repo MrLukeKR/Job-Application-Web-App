@@ -27,7 +27,7 @@
         <td> {{ applicant.homeAddress.town }} </td> 
         <td> {{ applicant.homeAddress.county }} </td> 
         <td> {{ applicant.homeAddress.postcode }} </td> 
-        <td> {{ applicant.startDate }} </td> 
+        <td> {{ formatDate(applicant.startDate) }} </td> 
     </tr>
 </table>
 <br>
@@ -39,11 +39,11 @@
     </tr>
     <tr>
         <td align="right"><b>Earliest Start Date:</b> </td>
-        <td>{{ earliestStartDate }}</td>
+        <td>{{ formatDate(earliestStartDate) }}</td>
     </tr>
     <tr>
         <td align="right"><b>Latest Start Date:</b> </td>
-        <td>{{ latestStartDate }}</td>
+        <td>{{ formatDate(latestStartDate) }}</td>
     </tr>
 </table>
 </section>
