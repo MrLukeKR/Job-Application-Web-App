@@ -1,8 +1,7 @@
 import { formatDate } from "@angular/common";
-import { analyzeAndValidateNgModules } from "@angular/compiler";
-import { Component, OnInit, Output } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { EventEmitter } from "events";
+import { ApplicationService } from "../_services/application.service";
 
 @Component({
     selector: 'app-application',
@@ -10,10 +9,11 @@ import { EventEmitter } from "events";
     styleUrls: ['./application.component.css']
   })
 export class ApplicationComponent implements OnInit{
-    @Output() cancelApplication = new EventEmitter();
     model: any = {};
     applicationForm: FormGroup;
     today: any;
+
+    constructor(private applicationService: ApplicationService) { }
 
     ngOnInit(): void{
         this.initForm();
@@ -38,7 +38,7 @@ export class ApplicationComponent implements OnInit{
     }
 
     applyToJob(){
-        console.log(this.applicationForm.value);
+        this.applicationService.sendApplicantToAPI(this.applicationForm.value);
     }
 
     cancel(){

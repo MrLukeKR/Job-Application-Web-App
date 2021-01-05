@@ -52,11 +52,9 @@
       <br>
 
       <div class="form-group text-center">
-        <button class="btn btn-default mr-2" type="button" (click)="cancel()">Cancel Application</button>
-        <button class="btn btn-default mr-2" type="submit" [disabled]="!applicationForm.valid">Submit Application</button>
+        <button class="btn btn-danger mr-2" type="button" (click)="cancel()">Cancel Application</button>
+        <button class="btn btn-success mr-2" type="submit" [disabled]="!applicationForm.valid">Submit Application</button>
       </div>
     </form>
-
-    <p>Status: {{applicationForm.status | json}}</p>
 </section>
 
