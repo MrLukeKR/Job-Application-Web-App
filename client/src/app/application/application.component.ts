@@ -22,18 +22,18 @@ export class ApplicationComponent implements OnInit{
 
     initForm(){
         this.applicationForm = new FormGroup({
-            forename: new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-            surname: new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-            emailAddress: new FormControl("", [Validators.required, Validators.email]),
-            address1: new FormControl("", Validators.required),
-            address2: new FormControl("", Validators.required),
+            forename: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(20), Validators.pattern("[a-zA-Z]*")]),
+            surname: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(20), Validators.pattern("[a-zA-Z]*")]),
+            emailAddress: new FormControl(null, [Validators.required, Validators.email]),
+            address1: new FormControl(null, Validators.required),
+            address2: new FormControl(null, Validators.required),
             address3: new FormControl(),
-            town: new FormControl("", Validators.required),
-            county: new FormControl("", Validators.required),
-            postcode: new FormControl("", [Validators.required, Validators.pattern("[a-z]{1,2}[0-9][a-z0-9]?\s?[0-9][a-z]{2}")]),
-            homePhone: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(11), Validators.pattern("[0-9]")]),
-            mobilePhone: new FormControl("", [Validators.minLength(10), Validators.maxLength(11), Validators.pattern("[0-9]")]),
-            startDate: new FormControl("", Validators.required)
+            town: new FormControl(null, Validators.required),
+            county: new FormControl(null, Validators.required),
+            postcode: new FormControl(null, [Validators.required, Validators.pattern("[a-zA-Z]{1,2}[0-9][a-zA-Z0-9]?\ ?[0-9][a-zA-Z]{2}")]),
+            homePhone: new FormControl(null, [Validators.required, Validators.pattern("[0-9]{10,11}")]),
+            mobilePhone: new FormControl(null, [Validators.pattern("[0-9]{10,11}")]),
+            startDate: new FormControl(null, Validators.required)
         });
     }
 
