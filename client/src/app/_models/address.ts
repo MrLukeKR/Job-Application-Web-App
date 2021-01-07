@@ -1,3 +1,6 @@
+/*
+Address model class to provide structure to frontend collected data
+*/
 export interface Address{
     id: number;
     address1: string;

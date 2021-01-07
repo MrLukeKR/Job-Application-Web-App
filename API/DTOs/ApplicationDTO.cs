@@ -3,6 +3,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace API.DTOs
 {
+    /*
+    Application Data Transfer Object to allow for a more controlled
+    submission pipeline, ensuring data types and validation, as well
+    as making it easier and simpler to pass information between methods
+    (i.e. a single object, rather than list of parameters)
+    */
     public class ApplicationDTO
     {
         [Required]

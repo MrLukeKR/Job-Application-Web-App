@@ -1,4 +1,3 @@
-import { HttpClient, HttpClientJsonpModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,10 +10,6 @@ export class AppComponent implements OnInit {
 
   constructor() {}
   
-  ngOnInit() {
-
-  }
-
-
+  ngOnInit() { }
 }
 

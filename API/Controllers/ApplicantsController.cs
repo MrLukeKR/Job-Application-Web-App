@@ -7,13 +7,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
+    /*
+    Applicants Controller is responsible for retrieving applicant information from the 
+    API for display in the 'Admin Mode' of the frontend
+    */
     public class ApplicantsController : BaseController
     {
+        // Reference to the backend database
         private readonly DataContext _context;
-        public ApplicantsController(DataContext context)
-        {
-            _context = context;
-        }
+
+        // Constructor assigns a reference to the database
+        public ApplicantsController(DataContext context) { _context = context; }
 
         /*
         API endpoint to get all Applicant information from the database asynchronously,

@@ -13,8 +13,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Simple switch between application form and existing applicant views
   applicantViewToggle(){
     this.adminMode = !this.adminMode;
   }
-
 }

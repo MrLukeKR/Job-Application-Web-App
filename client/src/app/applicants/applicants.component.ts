@@ -9,7 +9,7 @@ import { Applicant } from '../_models/applicant';
   styleUrls: ['./applicants.component.css']
 })
 export class ApplicantsComponent implements OnInit {
-  applicantEntities: any;
+  applicantEntities: Applicant[];
   earliestStartDate: Date;
   latestStartDate: Date;
   startDates: Date[];
@@ -19,9 +19,10 @@ export class ApplicantsComponent implements OnInit {
   ngOnInit(): void {
     this.getApplicants();
   }
+
   // Retrieve the database contents for applicant information from the ASP.NET API
   getApplicants() {
-    this.http.get("https://localhost:5001/api/applicants").subscribe(response => 
+    this.http.get<Applicant[]>("https://localhost:5001/api/applicants").subscribe(response => 
     { 
       this.applicantEntities = response;
       this.processDates();
@@ -30,6 +31,10 @@ export class ApplicantsComponent implements OnInit {
     );
   }
 
+  /*
+  Convert all text information for start dates into C# Date objects, to allow
+  for simpler and more effective date sorting
+  */
   processDates(){    
     this.startDates = this.applicantEntities.map(x => x.startDate = new Date(x.startDate));
     
@@ -37,6 +42,10 @@ export class ApplicantsComponent implements OnInit {
     this.latestStartDate = new Date(this.startDates.reduce((a, b) => a > b ? a : b));
   }
 
+  /* 
+  Method to format dates to a desired format, for example US or GB ordering,
+  including day of the week, or a short-hand version such as dd/mm/yyyy
+  */
   formatDate(date: Date){
     var pipe = new DatePipe('en-GB');
 

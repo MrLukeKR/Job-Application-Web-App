@@ -1,7 +1,8 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace API.Entities
 {
+    /*
+    Address Domain entity, used to create database tables using Code-First
+    */
     public class Address
     {
         public int ID { get; set; }

@@ -1,5 +1,8 @@
 import { Address } from "./address";
 
+/*
+Applicant model class to provide structure to frontend collected data
+*/
 export interface Applicant{
     id: number;
     forename: string;

@@ -21,6 +21,12 @@ export class ApplicationComponent implements OnInit{
         this.today = formatDate(new Date(), 'yyyy-MM-dd', 'en');
     }
 
+    /*
+    Creates a new form control for the frontend application form, complete
+    with all the necessary frontend validation needed for each field.
+    The form will not submit unless all validations pass, and invalid forms
+    are highlighted red using ng-invalid.
+    */
     initForm(){
         this.applied = false;
 
@@ -40,13 +46,19 @@ export class ApplicationComponent implements OnInit{
         });
     }
 
+    /*
+    Submits the application form to the backend API, and toggles the 'applied'
+    flag, which is used to show a post-submission confirmation message
+    */
     applyToJob(){
         this.applied = true;
         this.applicationService.sendApplicantToAPI(this.applicationForm.value);
-        
-
     }
 
+    /*
+    Cancels the application by re-initialising the form. A simple JavaScript
+    confirmation dialogue box is displayed before the operation is performed
+    */
     cancel(){
         if(confirm("Are you sure you wish to cancel your application?"))
             this.initForm();

@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace API.Entities
 {
+    /*
+    Applicant Domain entity, used to create database tables using Code-First 
+    */
     public class Applicant
     {
         [Required]
